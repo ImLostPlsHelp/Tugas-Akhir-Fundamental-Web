@@ -6,10 +6,10 @@ Dalam mengerjakan proyek ini, ada beberapa kriteria yang perlu Anda penuhi. Krit
 Berikut adalah daftar kriteria dari proyek submission yang harus Anda penuhi.
 
 <h2> Kriteria Wajib 1: Menampilkan Daftar Catatan dengan Baik </h2>
-- Aplikasi harus menampilkan daftar catatan dari data dumi yang telah kami sediakan. Silakan buka tautan ini. Pastikan seluruh data yang disediakan tampil pada aplikasi dengan baik.
+* Aplikasi harus menampilkan daftar catatan dari data dumi yang telah kami sediakan. Silakan buka tautan ini. Pastikan seluruh data yang disediakan tampil pada aplikasi dengan baik.
 
 <h2> Kriteria Wajib 2: Formulir Tambah Catatan </h2>
-- Karena merupakan aplikasi pencatatan, Anda diminta untuk membuat sebuah formulir dengan spesifikasi berikut:
+* Karena merupakan aplikasi pencatatan, Anda diminta untuk membuat sebuah formulir dengan spesifikasi berikut:
     - Terdapat dua input yang merupakan judul dan isi (body) dari catatan.
     - Gunakan tipe input yang sesuai dengan kebutuhan. Misalnya, untuk body gunakanlah textarea.
 
