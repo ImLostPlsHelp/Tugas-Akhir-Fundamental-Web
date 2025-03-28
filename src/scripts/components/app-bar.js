@@ -5,8 +5,7 @@ class AppBar extends HTMLElement {
   constructor() {
     super();
 
-    this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._style = document.createElement('style');
+    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -14,18 +13,22 @@ class AppBar extends HTMLElement {
   }
 
   render() {
-    this._style.textContent = `
-      :host {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
-        background-color: #2c3e50;
-        color: white;
-        padding: 16px;
-      }
-    `
+    this.shadowRoot.innerHTML = `
+      <style>
+        .app-bar {
+          background-color: #007bff;
+          color: white;
+          padding: 16px 24px;
+          font-size: 1.5rem;
+          font-weight: bold;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+      </style>
+      <header class="app-bar">
+        Notes App 📒
+      </header>
+    `;
   }
 }
+
+customElements.define("app-bar", AppBar);
