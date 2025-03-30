@@ -24,3 +24,5 @@ function renderNotes() {
 }
 
 renderNotes();
+
+import "./components/note-input.js";
