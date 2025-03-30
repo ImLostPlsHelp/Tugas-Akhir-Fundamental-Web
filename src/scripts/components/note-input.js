@@ -81,6 +81,10 @@ class NoteInput extends HTMLElement {
       button:hover {
         background-color: #0056b3;
       }
+
+      .error {
+      color: red;
+      }
     `;
 
     this.shadowRoot.appendChild(this._style);
