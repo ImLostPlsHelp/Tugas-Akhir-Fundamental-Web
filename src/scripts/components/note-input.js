@@ -11,16 +11,17 @@ class NoteInput extends HTMLElement {
 
   connectedCallback() {
     this.render();
-
+  
     const title = this.shadowRoot.querySelector("#title");
     const body = this.shadowRoot.querySelector("#body");
-
+  
     [title, body].forEach((input) => {
       input.addEventListener("input", this._customValidationHandler.bind(this));
-      input.addEventListener("invalid", this._handleValidationMessage.bind(this));
+      input.addEventListener("invalid", this._customValidationHandler.bind(this));
       input.addEventListener("blur", this._handleValidationMessage.bind(this));
     });
   }
+  
 
   _customValidationHandler(e) {
     const input = e.target;
@@ -36,12 +37,13 @@ class NoteInput extends HTMLElement {
     const isValid = input.validity.valid;
     const errorMessage = input.validationMessage;
     const errorId = input.getAttribute("aria-describedby");
-    const errorElement = this.shadowRoot.getElementById(`#${errorId}`);
-
-    if (errorEl) {
+    const errorElement = this.shadowRoot.getElementById(errorId);
+  
+    if (errorElement) {
       errorElement.textContent = isValid ? "" : errorMessage;
     }
   }
+  
 
   updateStyle() {
     this._style.textContent = `
