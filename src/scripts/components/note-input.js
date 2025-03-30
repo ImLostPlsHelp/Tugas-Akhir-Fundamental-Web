@@ -1,4 +1,4 @@
-class NoteInput extends HTMLCollection {
+class NoteInput extends HTMLElement {
   _shadowRoot = null;
   _style = null;
   
@@ -13,10 +13,7 @@ class NoteInput extends HTMLCollection {
   }
 
   render() {
-    this._shadowRoot.innerHTML = `
-      <style>
-
-      </style>
+    this.shadowRoot.innerHTML = `
 
       <div class="note-input">
         <form>

@@ -1,13 +1,26 @@
+import "../utils.js";
+
 import "./components/app-bar.js";
 import "./components/footer-bar.js";
 
+import "./components/note-list.js";
 import './components/note-item.js';
-import { notesData } from './notes.js';
+import Notes from './notes.js';
 
-const container = document.getElementById('notes-container');
+// import "./components/note-input.js";
 
-notesData.forEach(note => {
-  const el = document.createElement('note-item');
-  el.noteData = note;
-  container.appendChild(el);
-});
+const noteList = document.querySelector('note-list');
+
+function renderNotes() {
+    const notes = Notes.getAll();
+    noteList.innerHTML = '';
+
+    notes.forEach(note => {
+        const noteItem = document.createElement('note-item');
+        noteItem.noteData = note;
+
+        noteList.appendChild(noteItem);
+    })
+}
+
+renderNotes();

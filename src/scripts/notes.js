@@ -107,5 +107,17 @@ const notesData = [
 ];
 
 console.log(notesData);
-export { notesData };
+
+class Notes {
+  static getAll() {
+    return notesData;
+  }
+
+  // buat form nanti
+  static add(note) {
+    notesData.push(note);
+  }
+}
+
+export default Notes;
 
