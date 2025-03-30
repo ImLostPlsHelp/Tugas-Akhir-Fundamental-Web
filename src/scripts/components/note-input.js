@@ -15,8 +15,17 @@ class NoteInput extends HTMLCollection {
   render() {
     this._shadowRoot.innerHTML = `
       <style>
-        
+
       </style>
+
+      <div class="note-input">
+        <form>
+          <input type="text" id="title" placeholder="Title..." required />
+          <textarea id="body" placeholder="Write your note here..." required></textarea>
+          <button type="submit">Add Note</button>
+        </form>
     `;
   }
 }
+
+customElements.define("note-input", NoteInput);
