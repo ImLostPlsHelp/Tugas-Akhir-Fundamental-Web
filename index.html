@@ -7,9 +7,14 @@
         <link rel="stylesheet" href="src/styles/style.css">
     </head>
     <body>
-        <app-bar></app-bar>
-
-        <footer-bar></footer-bar>
+        <main>
+            <app-bar></app-bar>
+            <div class="container">
+                <note-form></note-form>
+                <div id="notes-container"></div>
+            </div>
+            <footer-bar></footer-bar>
+        </main>
         <script type="module" src="src/scripts/app.js"></script>
     </body>
 </html>
