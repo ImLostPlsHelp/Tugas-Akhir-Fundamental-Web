@@ -1,3 +1,5 @@
+import "./styles/style.css";
+
 import "./scripts/components/utils.js";
 
 import "./scripts/components/app-bar.js"
