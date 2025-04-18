@@ -116,24 +116,7 @@ class NoteInput extends HTMLElement {
       <button type="submit">Add Note</button>
       </form>
 
-    `;
-
-    this.shadowRoot.querySelector("#note-input").addEventListener("submit", (e) => {
-      e.preventDefault();
-    
-      const title = this.shadowRoot.querySelector("#title");
-      const body = this.shadowRoot.querySelector("#body");
-    
-      title.reportValidity();
-      body.reportValidity();
-    
-      // Jika valid, bisa lanjutkan simpan note:
-      if (title.validity.valid && body.validity.valid) {
-        const noteData = {
-
-        };
-      }
-    });    
+    `;  
   }
 }
 
