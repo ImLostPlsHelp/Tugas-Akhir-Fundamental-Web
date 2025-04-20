@@ -30,7 +30,7 @@ class Utils {
       setTimeout(() => {
         resolve(response);
       }, 1000),
-    ); // bisa diubah ke 3000 kalau mau delay lebih lama
+    );
   }
 }
 
