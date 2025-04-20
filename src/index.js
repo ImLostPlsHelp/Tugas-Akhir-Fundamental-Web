@@ -10,6 +10,10 @@ import Utils from "./scripts/components/utils.js";
 
 const noteList = document.querySelector("note-list");
 
+const showResponseMessage = (message = 'Check your internet connection') => {
+    alert(message);
+  };
+
 async function createNotes(noteData) {
   try {
     const options = {
@@ -19,9 +23,11 @@ async function createNotes(noteData) {
       },
       body: JSON.stringify(noteData),
     };
-    await fetch("https://notes-api.dicoding.dev/v2/notes", options);
+    const response = await fetch("https://notes-api.dicoding.dev/v2/notes", options);
+    const result = await response.json();
+    showResponseMessage(result.message);
   } catch (error) {
-    console.error("Error creating note:", error);
+    showResponseMessage("Error creating note:", error);
   }
   renderNotes();
 }
@@ -34,9 +40,11 @@ async function deleteNotes(noteId) {
         "Content-Type": "application/json",
       },
     };
-    await fetch(`https://notes-api.dicoding.dev/v2/notes/${noteId}`, options);
+    const response = await fetch(`https://notes-api.dicoding.dev/v2/notes/${noteId}`, options);
+    const result = await response.json();
+    showResponseMessage(result.message);
   } catch (error) {
-    console.error("Error deleting note:", error);
+    showResponseMessage(error);
   }
   renderNotes();
 }
