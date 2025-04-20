@@ -80,7 +80,7 @@ class NoteItem extends HTMLElement {
     render() {
         this._emptyContent();
         this._updateStyle();
-
+    
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
             <div class="note-item">
@@ -92,9 +92,20 @@ class NoteItem extends HTMLElement {
                 </div>
                 <div class="note-item__createdAt">${this.noteData.createdAt}</div>
                 ${this.noteData.archived ? '<div class="note-item__archived"></div>' : ''}
+                <button class="note-item__delete" id="delete">Delete</button>
             </div>
         `;
+    
+        this._shadowRoot.querySelector('#delete').addEventListener('click', () => {
+            this.dispatchEvent(new CustomEvent('note-delete', {
+                detail: { id: this.noteData.id },
+                bubbles: true,
+                composed: true
+            }));
+        });
     }
+    
+    
 }
 
 customElements.define('note-item', NoteItem);
