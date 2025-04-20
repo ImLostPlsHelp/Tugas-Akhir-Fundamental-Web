@@ -6,6 +6,7 @@ import "./scripts/components/footer-bar.js";
 import "./scripts/components/note-list.js";
 import "./scripts/components/note-item.js";
 import "./scripts/components/note-input.js";
+import Utils from "./scripts/components/utils.js";
 
 const noteList = document.querySelector('note-list');
 
@@ -42,36 +43,46 @@ async function deleteNotes(noteId) {
 
 async function renderNotes() {
     noteList.innerHTML = '';
-
+    const loading = document.querySelector('#loading');
+  
+    Utils.showLoading(loading);
+  
     try {
-        const response = await fetch('https://notes-api.dicoding.dev/v2/notes');
-        const notes = await response.json();
-
-        if (notes.status === 'success') {
-            notes.data.forEach(note => {
-                const noteItem = document.createElement('note-item');
-                noteItem.noteData = {
-                    id: note.id,
-                    title: note.title,
-                    body: note.body,
-                    createdAt: note.createdAt,
-                    archived: note.archived,
-                };
-
-                noteItem.addEventListener('note-delete', (event) => {
-                    const noteId = noteItem.noteData.id;
-                    deleteNotes(noteId);
-                });
-
-                noteList.appendChild(noteItem);
-            });
-        } else {
-            noteList.innerHTML = '<p>Gagal memuat catatan.</p>';
-        }
-    } catch (error) {
+      const response = await fetch('https://notes-api.dicoding.dev/v2/notes');
+      
+      await Utils.sleep();
+  
+      const notes = await response.json();
+  
+      if (notes.status === 'success') {
+        notes.data.forEach(note => {
+          const noteItem = document.createElement('note-item');
+          noteItem.noteData = {
+            id: note.id,
+            title: note.title,
+            body: note.body,
+            createdAt: note.createdAt,
+            archived: note.archived,
+          };
+  
+          noteItem.addEventListener('note-delete', (event) => {
+            const noteId = event.detail.id;
+            deleteNotes(noteId);
+          });
+  
+          noteList.appendChild(noteItem);
+        });
+      } else {
         noteList.innerHTML = '<p>Gagal memuat catatan.</p>';
+      }
+    } catch (error) {
+      noteList.innerHTML = '<p>Gagal memuat catatan.</p>';
+      console.error('Error loading notes:', error);
+    } finally {
+      Utils.hideLoading(loading);
     }
-}
+  }
+  
 
 document.addEventListener('DOMContentLoaded', () => {
     const noteInput = document.querySelector('note-input');
