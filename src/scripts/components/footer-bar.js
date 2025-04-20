@@ -1,19 +1,19 @@
 class FooterBar extends HTMLElement {
-    _shadowRoot = null;
-    _style = null;
+  _shadowRoot = null;
+  _style = null;
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.attachShadow({ mode: "open" });
-    }
+    this.attachShadow({ mode: "open" });
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() {
-        this.shadowRoot.innerHTML = `
+  render() {
+    this.shadowRoot.innerHTML = `
             <style>
                 .footer-bar {
                     background-color: #007bff;
@@ -33,8 +33,8 @@ class FooterBar extends HTMLElement {
                 Made by Maurits | @copy 2025
                 </p>
             </footer>
-        `
-    }
+        `;
+  }
 }
 
 customElements.define("footer-bar", FooterBar);

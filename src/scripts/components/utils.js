@@ -1,15 +1,15 @@
 class Utils {
   static emptyElement(element) {
-    element.innerHTML = '';
+    element.innerHTML = "";
   }
 
   static showElement(element) {
-    element.style.display = 'block';
+    element.style.display = "block";
     element.hidden = false;
   }
 
   static hideElement(element) {
-    element.style.display = 'none';
+    element.style.display = "none";
     element.hidden = true;
   }
 
@@ -26,9 +26,11 @@ class Utils {
   }
 
   static sleep(response) {
-    return new Promise((resolve) => setTimeout(() => {
-      resolve(response);
-    }, 1000)); // bisa diubah ke 3000 kalau mau delay lebih lama
+    return new Promise((resolve) =>
+      setTimeout(() => {
+        resolve(response);
+      }, 1000),
+    ); // bisa diubah ke 3000 kalau mau delay lebih lama
   }
 }
 
