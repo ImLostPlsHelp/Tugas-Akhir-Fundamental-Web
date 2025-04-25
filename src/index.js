@@ -15,6 +15,8 @@ const showResponseMessage = (message = 'Check your internet connection') => {
   };
 
 async function createNotes(noteData) {
+  const loading = document.querySelector("#loading");
+  Utils.showLoading(loading);
   try {
     const options = {
       method: "POST",
@@ -25,14 +27,17 @@ async function createNotes(noteData) {
     };
     const response = await fetch("https://notes-api.dicoding.dev/v2/notes", options);
     const result = await response.json();
-    showResponseMessage(result.message);
   } catch (error) {
     showResponseMessage("Error creating note:", error);
+  } finally {
+    Utils.hideLoading(loading);
   }
   renderNotes();
 }
 
 async function deleteNotes(noteId) {
+  const loading = document.querySelector("#loading");
+  Utils.showLoading(loading);
   try {
     const options = {
       method: "DELETE",
@@ -42,11 +47,12 @@ async function deleteNotes(noteId) {
     };
     const response = await fetch(`https://notes-api.dicoding.dev/v2/notes/${noteId}`, options);
     const result = await response.json();
-    showResponseMessage(result.message);
   } catch (error) {
     showResponseMessage(error);
+  } finally {
+    Utils.hideLoading(loading);
+    renderNotes();
   }
-  renderNotes();
 }
 
 async function renderNotes() {
